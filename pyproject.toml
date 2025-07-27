@@ -6,4 +6,11 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "gensim>=4.3.3",
+    "nltk>=3.9.1",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.5",
 ]

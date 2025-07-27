@@ -1,0 +1,40 @@
+repos:
+  # Standard pre-commit utility hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+        exclude: ^chart/templates
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key
+      - id: name-tests-test
+        args: [--pytest-test-first]
+        exclude: ^tests/data/
+
+  # Your automatic commit message tool
+  - repo: https://github.com/radix-ai/auto-smart-commit
+    rev: v1.0.3
+    hooks:
+      - id: auto-smart-commit
+
+  # Spell-checking
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        args: ["-L", "CO,IR,OT,RC,DA,Komma,nd,oder, interm", "--quiet-level", "3", "--write-changes"]
+        name: codespell
+        description: Checks for common misspellings in text files.
+        language: python
+        files: \.py$|\.md$
+
+  # Ruff: replaces Black, Isort and Autoflake
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.2  # latest as of Jun 26, 2025
+    hooks:
+      # 1) Lint & auto-fix issues (e.g. unused imports, undefined names)
+      - id: ruff-check
+        args: [--fix]
+      # 2) Enforce consistent formatting (line length, imports order, etc.)
+      - id: ruff-format
