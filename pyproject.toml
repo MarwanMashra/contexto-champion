@@ -14,6 +14,7 @@ dependencies = [
     "torch~=2.7.0",
     "torchvision~=0.22.0",
     "torchaudio~=2.7.0",
+    "trl>=0.19.1",
 ]
 
 [dependency-groups]
@@ -36,3 +37,12 @@ torchaudio = [
 name = "pytorch-cu128"
 url = "https://download.pytorch.org/whl/cu128"
 explicit = true
+
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+exclude = [
+  ".venv/**",                   # don’t index your virtual‑env
+  "unsloth_compiled_cache/**",  # don’t index the Unsloth cache
+]
