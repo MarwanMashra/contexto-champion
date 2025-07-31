@@ -10,16 +10,23 @@ dependencies = [
     "nltk>=3.9.1",
     "tqdm>=4.67.1",
     "unsloth>=2025.7.8",
-    "vllm>=0.10.0",
     "torch~=2.7.0",
     "torchvision~=0.22.0",
     "torchaudio~=2.7.0",
     "trl>=0.19.1",
+    "verifiers>=0.1.2",
+    "vllm>=0.10.0",
 ]
 
 [dependency-groups]
 dev = [
     "ruff>=0.12.5",
+]
+
+[tool.uv]
+prerelease = "allow"       # keep lock & sync consistent
+override-dependencies = [
+  "triton>=3.4.0"          # overrides every triton pin inside the tree
 ]
 
 [tool.uv.sources]
@@ -32,6 +39,10 @@ torchvision = [
 torchaudio = [
   { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
+
+[[tool.uv.index]]
+name = "triton-nightly"
+url = "https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple"
 
 [[tool.uv.index]]
 name = "pytorch-cu128"
