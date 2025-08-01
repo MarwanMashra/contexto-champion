@@ -9,13 +9,13 @@ dependencies = [
     "ipykernel>=6.30.0",
     "nltk>=3.9.1",
     "tqdm>=4.67.1",
-    "unsloth>=2025.7.8",
     "torch~=2.7.0",
     "torchvision~=0.22.0",
     "torchaudio~=2.7.0",
     "trl>=0.19.1",
     "verifiers>=0.1.2",
     "vllm>=0.10.0",
+    "unsloth>=2025.7.11",
 ]
 
 [dependency-groups]
@@ -57,3 +57,7 @@ exclude = [
   ".venv/**",                   # don’t index your virtual‑env
   "unsloth_compiled_cache/**",  # don’t index the Unsloth cache
 ]
+
+[tool.ruff.lint]
+# skip linting notebook files
+exclude = ["*.ipynb"]
